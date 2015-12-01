@@ -142,7 +142,7 @@
                 var url = proxyServiceUrl || getMapUrl;
 
                 var layerName = parsedUrl.length > 1 && parsedUrl[1];
-                OL_HELPERS.withWMSLayers(url, getMapUrl, layerProcessor, layerName);
+                OL_HELPERS.withWMSLayers(url, getMapUrl, layerProcessor, layerName, true /* useTiling*/ );
             },
             'esrigeojson': function (resource, proxyUrl, proxyServiceUrl, layerProcessor) {
                 var url = proxyUrl || resource.url;
@@ -154,7 +154,7 @@
 
                 var layerName = parsedUrl.length > 1 && parsedUrl[1];
 
-                OL_HELPERS.withArcGisLayers(parsedUrl[0], layerProcessor, layerName);
+                OL_HELPERS.withArcGisLayers(url, layerProcessor, layerName, parsedUrl[0]);
             },
             'gft': function (resource, proxyUrl, proxyServiceUrl, layerProcessor) {
                 var tableId = OL_HELPERS.parseURL(resource.url).query.docid;
@@ -322,7 +322,7 @@
                 var proxyServiceUrl = this.options.proxy_service_url;
 
                 if (!ckan.geoview) ckan.geoview = {};
-                ckan.geoview.googleApiKey = this.options.gapi_key;
+                ckan.geoview.gapi_key = this.options.gapi_key;
 
 
                 withLayers(preload_resource, proxyUrl, proxyServiceUrl, $_.bind(this.addLayer, this));
