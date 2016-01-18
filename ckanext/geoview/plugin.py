@@ -170,7 +170,6 @@ class OLGeoView(GeoViewBase):
             proxy_service_url = get_proxified_service_url(data_dict)
         else:
             proxy_url = data_dict['resource']['url']
-            proxy_service_url = ''
         gapi_key = config.get('ckanext.geoview.gapi_key')
         if not p.toolkit.check_ckan_version(min_version='2.3'):
             p.toolkit.c.resource['proxy_url'] = proxy_url
